@@ -1,4 +1,4 @@
-import {TextArea, TextField} from "@radix-ui/themes";
+import {Button, TextArea, TextField} from "@radix-ui/themes";
 
 const NewIssuePage = () => {
     return (
@@ -6,6 +6,7 @@ const NewIssuePage = () => {
             <TextField.Root placeholder='Title'>
             </TextField.Root>
             <TextArea placeholder="Description" />
+            <Button>Submit New Issue</Button>
         </div>
     )
 }
