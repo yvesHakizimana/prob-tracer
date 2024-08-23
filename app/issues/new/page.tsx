@@ -14,13 +14,24 @@ import ErrorMessage from "@/app/components/ErrorMessage";
 type IssueForm = z.infer<typeof createIssueSchema>;
 
 const NewIssuePage = () => {
-    const {register, control, handleSubmit, formState: { errors} } = useForm<IssueForm>({
+    const {register, control, handleSubmit, formState: { errors } } = useForm<IssueForm>({
         resolver: zodResolver(createIssueSchema),
     });
     const router = useRouter();
     const [error, setError] = useState<String>();
     const [isSubmitting, setSubmitting] = useState(false)
 
+
+    const onSubmit = handleSubmit(async (data) => {
+        try{
+            setSubmitting(true)
+            await axios.post('/api/issues', data);
+            router.push('/issues')
+        } catch(error){
+            setSubmitting(false)
+            setError('Unexpected thing happened.')
+        }
+    })
 
     return (
         <div className='max-w-xl'>
@@ -32,20 +43,7 @@ const NewIssuePage = () => {
                 </Callout.Root>
             }
             <form className='space-y-6'
-                  onSubmit={
-                      handleSubmit(async (data) => {
-                          try{
-                              setSubmitting(true)
-                              await axios.post('/api/issues', data);
-                              router.push('/issues')
-                          } catch(error){
-                              setSubmitting(false)
-                              setError('Unexpected thing happened.')
-                          }
-
-                      })
-                  }>
-
+                  onSubmit={onSubmit}>
                 <TextField.Root placeholder='Title' {...register('title')}/>
                 <ErrorMessage>
                     {errors.title?.message}
