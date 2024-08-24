@@ -1,6 +1,7 @@
 'use client'
 import {Button, TextField, Callout, Spinner} from "@radix-ui/themes";
 import "easymde/dist/easymde.min.css";
+import SimpleMDE from "react-simplemde-editor"
 import {useForm, Controller} from "react-hook-form"
 import axios from "axios";
 import {useRouter} from "next/navigation";
@@ -10,9 +11,6 @@ import { z } from "zod"
 import {IssueSchema} from "@/app/validationSchemas";
 import { ErrorMessage } from "@/app/components";
 import {Issue} from "@prisma/client";
-import dynamic from "next/dynamic";
-
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {ssr: false })
 
 type IssueFormData = z.infer<typeof IssueSchema>;
 
