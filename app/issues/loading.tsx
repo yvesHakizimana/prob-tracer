@@ -18,7 +18,7 @@ const IssueLoadingPage = () => {
 
                 <Table.Body>
                     {issues.map((issue) => (
-                        <Table.Row>
+                        <Table.Row key={issue}>
                             <Table.RowHeaderCell>
                                 <Skeleton />
                                 <div className='block md:hidden'>
