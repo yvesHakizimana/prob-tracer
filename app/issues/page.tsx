@@ -47,4 +47,6 @@ const Page = async () => {
     )
 }
 
+export const revalidate = 0;
+
 export default Page;

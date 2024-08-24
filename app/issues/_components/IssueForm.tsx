@@ -14,10 +14,9 @@ import dynamic from "next/dynamic";
 
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {ssr: false })
 
-
 type IssueFormData = z.infer<typeof IssueSchema>;
 
-const IssueForm = async ({ issue }: {issue?: Issue}) => {
+const IssueForm =  ({ issue }: {issue?: Issue}) => {
     const {register, control, handleSubmit, formState: { errors } } = useForm<IssueFormData>({
         resolver: zodResolver(IssueSchema),
     });
@@ -28,8 +27,12 @@ const IssueForm = async ({ issue }: {issue?: Issue}) => {
     const onSubmit = handleSubmit(async (data) => {
         try{
             setSubmitting(true)
-            await axios.post('/api/issues', data);
+            if(issue)
+                await axios.patch('/api/issues/' + issue.id, data)
+            else
+                await axios.post('/api/issues', data);
             router.push('/issues')
+            router.refresh();
         } catch(error){
             setSubmitting(false)
             setError('Unexpected thing happened.')
@@ -63,10 +66,11 @@ const IssueForm = async ({ issue }: {issue?: Issue}) => {
                 <ErrorMessage>
                     {errors.description?.message}
                 </ErrorMessage>
-                <Button disabled={isSubmitting}>Submit New Issue {isSubmitting && <Spinner />}</Button>
+                <Button disabled={isSubmitting}>
+                    {issue ? 'Update Issue' : 'Submit New Issue'} {isSubmitting && <Spinner />}
+                </Button>
             </form>
         </div>
-
     )
 }
 
