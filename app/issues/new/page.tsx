@@ -11,16 +11,16 @@ import { z } from "zod"
 import {createIssueSchema} from "@/app/validationSchemas";
 import ErrorMessage from "@/app/components/ErrorMessage";
 
+
 type IssueForm = z.infer<typeof createIssueSchema>;
 
-const NewIssuePage = () => {
+const NewIssuePage = async () => {
     const {register, control, handleSubmit, formState: { errors } } = useForm<IssueForm>({
         resolver: zodResolver(createIssueSchema),
     });
     const router = useRouter();
     const [error, setError] = useState<String>();
     const [isSubmitting, setSubmitting] = useState(false)
-
 
     const onSubmit = handleSubmit(async (data) => {
         try{
@@ -65,3 +65,7 @@ const NewIssuePage = () => {
 
 
 export default NewIssuePage;
+
+function delay(arg0: number) {
+    throw new Error("Function not implemented.");
+}
