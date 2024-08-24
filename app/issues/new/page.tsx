@@ -1,6 +1,6 @@
 'use client'
 import {Button, TextField, Callout, Spinner} from "@radix-ui/themes";
-import SimpleMDE from "react-simplemde-editor";
+import SimpleMDE from "react-simplemde-editor"
 import "easymde/dist/easymde.min.css";
 import {useForm, Controller} from "react-hook-form"
 import axios from "axios";
@@ -66,6 +66,3 @@ const NewIssuePage = async () => {
 
 export default NewIssuePage;
 
-function delay(arg0: number) {
-    throw new Error("Function not implemented.");
-}
