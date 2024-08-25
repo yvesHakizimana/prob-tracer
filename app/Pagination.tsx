@@ -16,18 +16,19 @@ interface Props {
 }
 
 const Pagination = ({itemsCount, currentPage,  pageSize} : Props) => {
+    const searchParams = useSearchParams();
     const changePage = (page: number) => {
-        const params = new URLSearchParams();
+        const params = new URLSearchParams(searchParams);
         params.set('page', page.toString());
         router.push('?' + params.toString());
     }
 
     const router = useRouter();
-    const searchParams = useSearchParams();
+
     const pageCount = Math.ceil(itemsCount/ pageSize);
     if(pageCount <= 1) return null;
     return (
-        <Flex align='center' gap='3'>
+        <Flex align='center' gap='3'  justify='center' mt='6'>
             <Text> {currentPage} of {pageCount}</Text>
             <Button
                 disabled={currentPage === 1}
