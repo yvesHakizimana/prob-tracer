@@ -7,9 +7,9 @@ import {AuthOptions} from "@/app/api/auth/[...nextauth]/route";
 export async function PATCH(
     request: NextRequest,
     { params: {id}}: { params: { id: string } } ) {
-    //const session = await getServerSession(AuthOptions);
-    //if(!session)
-        //return NextResponse.json('Unauthorized', { status: 401})
+    const session = await getServerSession(AuthOptions);
+    if(!session)
+        return NextResponse.json('Unauthorized', { status: 401})
 
     const body = await request.json();
     const validation = patchIssueSchema.safeParse(body);
@@ -17,7 +17,7 @@ export async function PATCH(
         return NextResponse.json(validation.error.format(), { status: 400});
 
     const {assignedToUserId, title, description } = body
-
+    console.log(assignedToUserId);
     if(assignedToUserId){
         const foundUser = await prisma.user.findUnique({ where: { id : assignedToUserId }});
         if(!foundUser)
