@@ -17,7 +17,7 @@ const NavBar = () => {
 
     //Grabbing the status of the authentication and the data of the user from session
     //status can authenticated, unauthenticated and also loading.
-    const { status, data: session} = useSession();
+    const { status} = useSession();
 
     return (
         <nav className='border-b mb-5 px-4 py-4'>
