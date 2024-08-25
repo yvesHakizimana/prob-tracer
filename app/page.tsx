@@ -1,7 +1,8 @@
 import Pagination from "@/app/Pagination";
 
-export default function Home() {
+
+export default function Home({ searchParams: { page}} : { searchParams: { page: string } } ) {
   return (
-    <Pagination itemsCount={100} currentPage={20} pageSize={5} />
+    <Pagination itemsCount={100} currentPage={parseInt(page)} pageSize={5} />
   )
 }
