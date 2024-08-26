@@ -3,6 +3,7 @@ import IssueAction from "@/app/issues/IssueAction";
 import {Status} from "@prisma/client";
 import Pagination from "@/app/Pagination";
 import IssueTable, {columnNames, IssueQuery} from "@/app/issues/IssueTable";
+import {Metadata} from "next";
 
 interface Props{
     searchParams: IssueQuery
@@ -34,5 +35,10 @@ const Page = async ({searchParams}: Props) => {
 }
 
 export const revalidate = 0;
+
+export const metadata: Metadata = {
+    title: 'Problem-Tracer - Issue List',
+    description: 'View a list of the bugs/issues in the project'
+}
 
 export default Page;

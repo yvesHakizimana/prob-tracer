@@ -4,6 +4,12 @@ import IssueSummary from "@/app/IssueSummary";
 import prisma from "@/prisma/client";
 import IssuesChart from "@/app/IssuesChart";
 import {Flex, Grid} from "@radix-ui/themes";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Problem-Tracer - Dashboard',
+    description: 'View a summary of the bugs/issues in the project'
+}
 
 
 export default async  function Home() {
