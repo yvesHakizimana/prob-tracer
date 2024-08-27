@@ -25,7 +25,7 @@ const LatestIssues = async () => {
                                     <IssueStatusBadge status={issue.status} />
                                 </Flex>
                                 {
-                                    issue.assignedToUserId
+                                    issue.assignedToUserId && issue.assignedToUser
                                     &&
                                     <Avatar fallback='?' src={issue.assignedToUser.image!}/>
                                 }

@@ -5,7 +5,7 @@ import IssueDetails from "@/app/issues/[id]/IssueDetails";
 import EditIssueButton from "@/app/issues/[id]/EditIssueButton";
 import DeleteIssueButton from "@/app/issues/[id]/DeleteIssueButton";
 import {getServerSession} from "next-auth";
-import {AuthOptions} from "@/app/api/auth/[...nextauth]/route";
+import {AuthOptions} from "@/app/api/AuthOptions";
 import AssigneeSelect from "@/app/issues/[id]/AssigneeSelect";
 import {cache} from "react";
 
