@@ -1,7 +1,3 @@
-Here’s a clear and deep `README.md` for your **Prob-tracer** project (an issue tracker) based on the dependencies and project structure found in the `package.json` file:
-
----
-
 # Prob-tracer (Issue Tracker)
 
 Prob-tracer is a Next.js web application designed to manage issues using CRUD (Create, Read, Update, Delete) functionalities. It integrates authentication and authorization to ensure secure access and control of issue tracking. The application provides a streamlined interface for creating, managing, and resolving issues in a team-based environment, making it ideal for software development projects or bug tracking.
